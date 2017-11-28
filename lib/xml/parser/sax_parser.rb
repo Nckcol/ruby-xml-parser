@@ -27,13 +27,27 @@ module Sax
     element :w
   end
 
-  class PlaneChars
+  class MilitaryType
     include SAXMachine
 
-    element :type
     element :places
     element :radar
     element :ammunition, class: PlaneAmmunition
+  end
+
+  class HumType
+    include SAXMachine
+
+    element :places
+    element :radar
+  end
+
+  class PlaneType
+    include SAXMachine
+
+    element :humType, class: HumType, as: :type
+    element :militaryType, class: MilitaryType, as: :type
+
   end
 
   class PlaneItem
@@ -43,7 +57,7 @@ module Sax
     element :model
     element :origin
     element :price
-    element :chars, class: PlaneChars
+    element :chars, class: PlaneType
   end
 
   class Parser
@@ -54,8 +68,8 @@ module Sax
       count = planes_parser.planes.count
       puts count
 
-      planes_parser.planes.sort_by { |plane| plane.chars.ammunition.rockets.to_f }.each do |plane|
-        puts "#{plane.model} with price #{plane.price}"
+      planes_parser.planes.sort_by { |plane| plane.chars.type.places.to_f || 0}.each do |plane|
+        puts "#{plane.model} with price #{plane.price} and places #{plane.chars.type.places}"
       end
     end
   end

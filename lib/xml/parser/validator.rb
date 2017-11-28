@@ -11,6 +11,9 @@ class XmlValidator
 
     @xsd.validate(doc).each do |error|
       puts error.message
+      return false
     end
+
+    true
   end
 end

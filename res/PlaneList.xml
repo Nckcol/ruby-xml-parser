@@ -9,12 +9,10 @@
             <origin>Ukraine</origin>
             <price>1999</price>
             <chars>
-                <type>истребитель</type>
-                <places>1</places>
-                <radar>false</radar>
-                <ammunition>
-                    <rockets>0</rockets>
-                </ammunition>
+                <humType>
+                    <places>1</places>
+                    <radar>false</radar>
+                </humType>
             </chars>
             <parameters>
                 <h>100</h>
@@ -28,12 +26,13 @@
             <origin>America</origin>
             <price>100</price>
             <chars>
-                <type>самолет поддержки</type>
-                <places>2</places>
-                <radar>true</radar>
-                <ammunition>
-                    <rockets>5</rockets>
-                </ammunition>
+                <militaryType>
+                    <places>2</places>
+                    <radar>true</radar>
+                    <ammunition>
+                        <rockets>5</rockets>
+                    </ammunition>
+                </militaryType>
             </chars>
             <parameters>
                 <h>5</h>

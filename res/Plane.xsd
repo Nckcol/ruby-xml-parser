@@ -47,17 +47,6 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="type">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="самолет поддержки"/>
-            <xs:enumeration value="сопровождения"/>
-            <xs:enumeration value="истребитель"/>
-            <xs:enumeration value="перехватчик"/>
-            <xs:enumeration value="разведчик"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-
     <xs:simpleType name="places">
         <xs:restriction base="xs:int">
             <xs:minInclusive value="1"/>
@@ -67,7 +56,7 @@
 
     <xs:simpleType name="rockets">
         <xs:restriction base="xs:int">
-            <xs:minInclusive value="0"/>
+            <xs:minInclusive value="1"/>
             <xs:maxInclusive value="10"/>
         </xs:restriction>
     </xs:simpleType>
@@ -82,22 +71,35 @@
         <xs:restriction base="xs:boolean"/>
     </xs:simpleType>
 
+    <xs:complexType name="militaryType">
+        <xs:sequence>
+            <xs:element name="places" type="places" />
+            <xs:element name="radar" type="radar" />
+            <xs:element name="ammunition" type="ammunition"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="humType">
+        <xs:sequence>
+            <xs:element name="places" type="places" />
+            <xs:element name="radar" type="radar" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="planeType">
+        <xs:choice>
+            <xs:element minOccurs="0" name="humType" type="humType"/>
+            <xs:element minOccurs="0" name="militaryType" type="militaryType"/>
+        </xs:choice>
+    </xs:complexType>
+
     <xs:complexType name="planeItem">
         <xs:sequence>
             <xs:element name="id" type="xs:int"/>
             <xs:element name="model" type="model"/>
             <xs:element name="origin" type="origin"/>
             <xs:element name="price" type="price"/>
-            <xs:element name="chars">
-                <xs:complexType >
-                    <xs:sequence>
-                        <xs:element name="type" type="type"/>
-                        <xs:element name="places" type="places" />
-                        <xs:element name="radar" type="radar" />
-                        <xs:element name="ammunition" type="ammunition"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="chars" type="planeType"/>
             <xs:element name="parameters">
                 <xs:complexType>
                     <xs:sequence>
