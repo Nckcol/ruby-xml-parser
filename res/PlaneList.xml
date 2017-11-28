@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Plane xmlns="PlaneNS"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="PlaneNS Plane.xsd">
+    <planes>
+        <planeItem>
+            <id>0</id>
+            <model>Some Model</model>
+            <origin>Ukraine</origin>
+            <price>1999</price>
+            <chars>
+                <type>истребитель</type>
+                <places>1</places>
+                <radar>false</radar>
+                <ammunition>
+                    <rockets>0</rockets>
+                </ammunition>
+            </chars>
+            <parameters>
+                <h>100</h>
+                <l>20</l>
+                <w>10</w>
+            </parameters>
+        </planeItem>
+        <planeItem>
+            <id>1</id>
+            <model>Another Model</model>
+            <origin>America</origin>
+            <price>100</price>
+            <chars>
+                <type>самолет поддержки</type>
+                <places>2</places>
+                <radar>true</radar>
+                <ammunition>
+                    <rockets>5</rockets>
+                </ammunition>
+            </chars>
+            <parameters>
+                <h>5</h>
+                <l>5</l>
+                <w>5</w>
+            </parameters>
+        </planeItem>
+    </planes>
+</Plane>
